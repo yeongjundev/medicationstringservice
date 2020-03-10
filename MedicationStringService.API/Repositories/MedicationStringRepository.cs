@@ -22,13 +22,25 @@ namespace MedicationStringService.API.Repositories
             return await context.SumAsync(medicationString => medicationString.DosageCount);
         }
 
-        public async Task<IEnumerable<TotalNumberByBottleSizeResult>> TotalNumberByBottleSize()
+        public async Task<IEnumerable<CountByBottleSize>> TotalNumberByBottleSize()
         {
-            IEnumerable<TotalNumberByBottleSizeResult> result = await context
+            IEnumerable<CountByBottleSize> result = await context
                 .GroupBy(ms => ms.BottleSize)
-                .Select(g => new TotalNumberByBottleSizeResult
+                .Select(g => new CountByBottleSize
                 {
                     BottleSize = g.Key,
+                    Count = g.Count()
+                }).ToListAsync();
+            return result;
+        }
+
+        public async Task<IEnumerable<CountByMedicationId>> DistinctMedicationIds()
+        {
+            IEnumerable<CountByMedicationId> result = await context
+                .GroupBy(ms => ms.MedicationId)
+                .Select(g => new CountByMedicationId
+                {
+                    MedicationId = g.Key,
                     Count = g.Count()
                 }).ToListAsync();
             return result;

@@ -2,7 +2,7 @@ using MedicationStringService.API.Models;
 
 namespace MedicationStringService.API.DTOs
 {
-    public class TotalNumberByBottleSizeDTO
+    public class CountByBottleSize
     {
         public BottleSizeEnum BottleSize { get; set; }
 

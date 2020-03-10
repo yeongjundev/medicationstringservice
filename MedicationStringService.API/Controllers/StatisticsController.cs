@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
+using MedicationStringService.API.DTOs;
 using MedicationStringService.API.Persistences;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,9 +31,16 @@ namespace MedicationStringService.API.Controllers
             var totalNumberByBottleSize = await _uow.MedicationStringRepo.TotalNumberByBottleSize();
             // A list of individual medication Ids and the number of times each individual medication
             // (MedicationId) has been supplied.
+            var distinctMedicationIdsWithCount = await _uow.MedicationStringRepo.DistinctMedicationIds();
 
-
-            return Ok();
+            var result = new StatisticsResult
+            {
+                TotalCount = totalMedicationStrings,
+                TotalDosageCount = totalDosageCounts,
+                PerBottleSize = totalNumberByBottleSize,
+                PerMedicationId = distinctMedicationIdsWithCount
+            };
+            return Ok(_mapper.Map<StatisticsDTO>(result));
         }
     }
 }

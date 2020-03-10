@@ -25,6 +25,13 @@ namespace MedicationStringService.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // EF Core InMemory DB setup
+            services.AddDbContext<AppDbContext>(
+                options => options.UseInMemoryDatabase(databaseName: "InMemoryDb"),
+                contextLifetime: ServiceLifetime.Scoped,
+                optionsLifetime: ServiceLifetime.Scoped
+            );
+
             services.AddControllers();
         }
 

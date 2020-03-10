@@ -115,3 +115,7 @@ C:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\Me
 C:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\obj\Debug\netcoreapp3.1\MedicationStringService.Tests.csproj.CopyComplete
 C:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\obj\Debug\netcoreapp3.1\MedicationStringService.Tests.dll
 C:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\obj\Debug\netcoreapp3.1\MedicationStringService.Tests.pdb
+c:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\bin\Debug\netcoreapp3.1\AutoMapper.dll
+c:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+c:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+c:\Users\Yeongjun-Im\source\repos\AdnuntiusCodingTest\MedicationStringService\MedicationStringService.Tests\bin\Debug\netcoreapp3.1\Moq.dll

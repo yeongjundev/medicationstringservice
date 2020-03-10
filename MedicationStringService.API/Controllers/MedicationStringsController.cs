@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using MedicationStringService.API.Helpers;
 using MedicationStringService.API.Persistences;
+using MedicationStringService.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -45,6 +46,9 @@ namespace MedicationStringService.API.Controllers
             {
                 return StatusCode(StatusCodes.Status403Forbidden);
             }
+
+            var builder = new MedicationStringBuilder(jsonBody.GetValue("medicationStrings"));
+            var medicationStrings = builder.Build();
 
             return Ok();
         }

@@ -1,3 +1,6 @@
+using MedicationStringService.API.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace MedicationStringService.API.Persistences
 {
     public class AppDbContext : DbContext

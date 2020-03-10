@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using MedicationStringService.API.DTOs;
 using MedicationStringService.API.Helpers;
 using MedicationStringService.API.Persistences;
 using MedicationStringService.API.Services;
@@ -14,9 +17,12 @@ namespace MedicationStringService.API.Controllers
     {
         private readonly IUnitOfWork _uow;
 
-        public MedicationStringsController(IUnitOfWork uow)
+        private readonly IMapper _mapper;
+
+        public MedicationStringsController(IUnitOfWork uow, IMapper mapper)
         {
             _uow = uow;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -50,9 +56,10 @@ namespace MedicationStringService.API.Controllers
             var builder = new MedicationStringBuilder(jsonBody.GetValue("medicationStrings"));
             var medicationStrings = builder.Build();
 
-            return Ok();
+            _uow.MedicationStringRepo.AddRange(medicationStrings);
+            await _uow.Complete();
+
+            return Ok(_mapper.Map<IEnumerable<MedicationStringDTO>>(medicationStrings));
         }
-
-
     }
 }

@@ -1,3 +1,4 @@
+using AutoMapper;
 using MedicationStringService.API.Persistences;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,8 @@ namespace MedicationStringService.API
             );
             // UnitOfWork setup
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // AutoMapper setup
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
         }

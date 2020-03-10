@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {}
+    "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
+    "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
+        "projectUniqueName": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
         "projectName": "MedicationStringService.API",
-        "projectPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
+        "projectPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
         "packagesPath": "C:\\Users\\Yeongjun-Im\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\obj\\",
+        "outputPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -42,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.1, )"

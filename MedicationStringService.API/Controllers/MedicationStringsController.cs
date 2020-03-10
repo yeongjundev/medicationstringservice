@@ -1,0 +1,36 @@
+using System.Threading.Tasks;
+using MedicationStringService.API.Helpers;
+using MedicationStringService.API.Persistences;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+
+namespace MedicationStringService.API.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class MedicationStringsController : ControllerBase
+    {
+        private readonly IUnitOfWork _uow;
+
+        public MedicationStringsController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post()
+        {
+            // Convert HttpRequestBodyStream to JObject.
+            JObject jsonBody = await Request.Body.ToJObject();
+            if (jsonBody == null)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
+
+            return Ok();
+        }
+
+
+    }
+}

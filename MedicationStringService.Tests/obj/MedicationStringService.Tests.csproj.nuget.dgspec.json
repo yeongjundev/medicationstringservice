@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj": {}
+    "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
+    "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
+        "projectUniqueName": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
         "projectName": "MedicationStringService.API",
-        "projectPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
+        "projectPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj",
         "packagesPath": "C:\\Users\\Yeongjun-Im\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\obj\\",
+        "outputPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj": {
+    "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj",
+        "projectUniqueName": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj",
         "projectName": "MedicationStringService.Tests",
-        "projectPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj",
+        "projectPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\MedicationStringService.Tests.csproj",
         "packagesPath": "C:\\Users\\Yeongjun-Im\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\obj\\",
+        "outputPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -108,8 +108,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
-                "projectPath": "C:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj"
+              "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj": {
+                "projectPath": "c:\\Users\\Yeongjun-Im\\source\\repos\\AdnuntiusCodingTest\\MedicationStringService\\MedicationStringService.API\\MedicationStringService.API.csproj"
               }
             }
           }

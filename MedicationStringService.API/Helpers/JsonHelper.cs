@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace MedicationStringService.API.Helpers
 {
@@ -25,6 +26,16 @@ namespace MedicationStringService.API.Helpers
             {
                 return null;
             }
+        }
+
+        public static bool Validate(this JObject jsonObject, string strSchema)
+        {
+            JSchema schema = JSchema.Parse(strSchema);
+            if (schema == null || jsonObject == null)
+            {
+                return false;
+            }
+            return jsonObject.IsValid(schema);
         }
     }
 }

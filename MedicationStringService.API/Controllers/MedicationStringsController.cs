@@ -28,6 +28,24 @@ namespace MedicationStringService.API.Controllers
                 return StatusCode(StatusCodes.Status403Forbidden);
             }
 
+            // Validate Json format via JSchema.
+            if (!jsonBody.Validate(
+                @"{
+                    'description': 'Post MedicationStrings',
+                    'type': 'object',
+                    'properties': {
+                        'medicationStrings': {
+                            'type': ['array', 'string'],
+                            'items': {
+                                'type': 'string'
+                            }
+                        }
+                    }
+                }"))
+            {
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
+
             return Ok();
         }
 

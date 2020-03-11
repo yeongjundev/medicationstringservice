@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MedicationStringService.API.Models;
+using MedicationStringService.API.Persistences;
 using Newtonsoft.Json.Linq;
 
 namespace MedicationStringService.API.Services
@@ -8,32 +9,21 @@ namespace MedicationStringService.API.Services
     // Extract string of MedicationStrings from JToken and create
     // MedicationString object if it is valid.
     // MedicationString objects are created when Build() is called.
-    public class MedicationStringBuilder
+    public class MedicationStringBuilder : IMedicationStringBuilder
     {
-        private JToken _token;
+        private readonly IUnitOfWork _uow;
 
-        private IEnumerable<string> _strMedicationStrings;
-
-        public MedicationStringBuilder(JToken medicationStringsToken)
+        public MedicationStringBuilder(IUnitOfWork uow)
         {
-            _token = medicationStringsToken;
-
-            if (_token.Type.Equals(JTokenType.String))
-            {
-                string[] tmp = _token.Value<string>().Split(";");
-                _strMedicationStrings = new List<string>(tmp);
-            }
-            else
-            {
-                _strMedicationStrings = _token.Values<string>();
-            }
+            _uow = uow;
         }
 
-        public IEnumerable<MedicationString> Build()
+        public IEnumerable<MedicationString> Build(JToken medicationStringsToken)
         {
+            var strMedicationStrings = _GetStrMedicationStrings(medicationStringsToken);
             var medicationStrings = new List<MedicationString>();
 
-            foreach (string strMedicationString in _strMedicationStrings)
+            foreach (string strMedicationString in strMedicationStrings)
             {
                 var medicationString = _CreateFromStrMedicationString(strMedicationString);
                 if (medicationString != null)
@@ -42,6 +32,19 @@ namespace MedicationStringService.API.Services
                 }
             }
             return medicationStrings;
+        }
+
+        private IEnumerable<string> _GetStrMedicationStrings(JToken token)
+        {
+            if (token.Type.Equals(JTokenType.String))
+            {
+                string[] tmp = token.Value<string>().Split(";");
+                return new List<string>(tmp);
+            }
+            else
+            {
+                return token.Values<string>();
+            }
         }
 
         private MedicationString _CreateFromStrMedicationString(string strMedicationString)
@@ -83,6 +86,11 @@ namespace MedicationStringService.API.Services
                 BottleSize = bottleSize,
                 DosageCount = dosageCount
             };
+        }
+
+        public void AddMedicationStrings(IEnumerable<MedicationString> medicationStrings)
+        {
+            _uow.MedicationStringRepo.AddRange(medicationStrings);
         }
     }
 }

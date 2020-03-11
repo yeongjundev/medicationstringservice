@@ -3,19 +3,29 @@ using MedicationStringService.API.Models;
 using MedicationStringService.API.Services;
 using Newtonsoft.Json.Linq;
 using Xunit;
+using Moq;
+using MedicationStringService.API.Persistences;
 
 namespace MedicationStringService.Tests
 {
     public class MedicationStringBuilderTests
     {
+        private Mock<IUnitOfWork> _uow;
+
+        public MedicationStringBuilderTests()
+        {
+            _uow = new Mock<IUnitOfWork>();
+        }
+
+
         [Fact]
         public void MedicationStringBuilder_Build_ReturnListOfMedicationStrings()
         {
             string strJson = @"{ 'medicationStrings': '186FASc73541_M_1058;18673cda541_S_0061;18673541_S_0146;not_valid_input;not_valid;' }";
             JObject json = JObject.Parse(strJson);
 
-            var builder = new MedicationStringBuilder(json.GetValue("medicationStrings"));
-            var medicationStrings = (List<MedicationString>)(builder.Build());
+            var builder = new MedicationStringBuilder(_uow.Object);
+            var medicationStrings = (List<MedicationString>)(builder.Build(json.GetValue("medicationStrings")));
 
             var expected = new List<MedicationString>()
             {

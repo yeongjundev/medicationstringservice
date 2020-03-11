@@ -19,10 +19,13 @@ namespace MedicationStringService.API.Controllers
 
         private readonly IMapper _mapper;
 
-        public MedicationStringsController(IUnitOfWork uow, IMapper mapper)
+        private readonly IMedicationStringBuilder _msBuilder;
+
+        public MedicationStringsController(IUnitOfWork uow, IMapper mapper, IMedicationStringBuilder msBuilder)
         {
             _uow = uow;
             _mapper = mapper;
+            _msBuilder = msBuilder;
         }
 
         [HttpPost]
@@ -53,11 +56,17 @@ namespace MedicationStringService.API.Controllers
                 return StatusCode(StatusCodes.Status403Forbidden);
             }
 
-            var builder = new MedicationStringBuilder(jsonBody.GetValue("medicationStrings"));
-            var medicationStrings = builder.Build();
+            var medicationStrings = _msBuilder.Build(jsonBody.GetValue("medicationStrings"));
 
-            _uow.MedicationStringRepo.AddRange(medicationStrings);
-            await _uow.Complete();
+            try
+            {
+                _uow.MedicationStringRepo.AddRange(medicationStrings);
+                await _uow.Complete();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
 
             return Ok(_mapper.Map<IEnumerable<MedicationStringDTO>>(medicationStrings));
         }

@@ -24,7 +24,7 @@ dotnet test
 2. .Net EntityFramework as ORM
 3. AutoMapper for data serialization and deserialization
 4. Newtonsoft Json, JsonSchema for Json format validation
-5. XUnit for unit testing
+5. XUnit and Moq for unit testing
 
 ### Architect and Pattern Overview
 

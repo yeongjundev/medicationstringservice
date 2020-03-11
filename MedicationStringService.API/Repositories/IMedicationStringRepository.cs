@@ -12,8 +12,8 @@ namespace MedicationStringService.API.Repositories
 
         Task<int> TotalDosageCount();
 
-        Task<IEnumerable<CountByBottleSize>> TotalNumberByBottleSize();
+        Task<List<CountByBottleSize>> TotalNumberByBottleSize();
 
-        Task<IEnumerable<CountByMedicationId>> DistinctMedicationIds();
+        Task<List<CountByMedicationId>> DistinctMedicationIds();
     }
 }

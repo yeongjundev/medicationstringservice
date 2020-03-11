@@ -13,41 +13,41 @@ namespace MedicationStringService.API.Repositories
         public MedicationStringRepository(DbSet<MedicationString> dbSet) : base(dbSet) { }
 
         // Get the total number of all MedicationStrings.
-        public async Task<int> TotalCount()
+        public Task<int> TotalCount()
         {
-            return await context.CountAsync();
+            return context.CountAsync();
         }
 
         // Get the sum of DosageCounts for all MedicationStrings.
-        public async Task<int> TotalDosageCount()
+        public Task<int> TotalDosageCount()
         {
-            return await context.SumAsync(medicationString => medicationString.DosageCount);
+            return context.SumAsync(medicationString => medicationString.DosageCount);
         }
 
         // Get the number of MedicationStrings per each BottleSize.
-        public async Task<IEnumerable<CountByBottleSize>> TotalNumberByBottleSize()
+        public Task<List<CountByBottleSize>> TotalNumberByBottleSize()
         {
-            IEnumerable<CountByBottleSize> result = await context
+            var result = context
                 .GroupBy(ms => ms.BottleSize)
                 .Select(g => new CountByBottleSize
                 {
                     BottleSize = g.Key,
                     Count = g.Count()
-                }).ToListAsync();
-            return result;
+                });
+            return result.ToListAsync();
         }
 
         // Get the number of MedicationStrings per each MedicationId.
-        public async Task<IEnumerable<CountByMedicationId>> DistinctMedicationIds()
+        public Task<List<CountByMedicationId>> DistinctMedicationIds()
         {
-            IEnumerable<CountByMedicationId> result = await context
+            var result = context
                 .GroupBy(ms => ms.MedicationId)
                 .Select(g => new CountByMedicationId
                 {
                     MedicationId = g.Key,
                     Count = g.Count()
-                }).ToListAsync();
-            return result;
+                });
+            return result.ToListAsync();
         }
     }
 }

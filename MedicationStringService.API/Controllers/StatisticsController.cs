@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MedicationStringService.API.DTOs;
@@ -23,22 +24,26 @@ namespace MedicationStringService.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            // The total number of medications (MedicationStrings) that have been inputted.
-            int totalMedicationStrings = await _uow.MedicationStringRepo.TotalCount();
-            // The total dosage count of all medications (MedicationStrings).
-            int totalDosageCounts = await _uow.MedicationStringRepo.TotalDosageCount();
-            // The total number of medications (MedicationStrings) by bottle size.
-            var totalNumberByBottleSize = await _uow.MedicationStringRepo.TotalNumberByBottleSize();
-            // A list of individual medication Ids and the number of times each individual medication
-            // (MedicationId) has been supplied.
-            var distinctMedicationIdsWithCount = await _uow.MedicationStringRepo.DistinctMedicationIds();
+            Task<int> totalMedicationStrings = _uow.MedicationStringRepo.TotalCount();
+            Task<int> totalDosageCounts = _uow.MedicationStringRepo.TotalDosageCount();
+            Task<List<CountByBottleSize>> totalNumberByBottleSize =
+                _uow.MedicationStringRepo.TotalNumberByBottleSize();
+            Task<List<CountByMedicationId>> distinctMedicationIdsWithCount =
+                _uow.MedicationStringRepo.DistinctMedicationIds();
+
+            Task.WaitAll(new Task[] {
+                totalMedicationStrings,
+                totalDosageCounts,
+                totalNumberByBottleSize,
+                distinctMedicationIdsWithCount
+            });
 
             var result = new StatisticsResult
             {
-                TotalCount = totalMedicationStrings,
-                TotalDosageCount = totalDosageCounts,
-                PerBottleSize = totalNumberByBottleSize,
-                PerMedicationId = distinctMedicationIdsWithCount
+                TotalCount = totalMedicationStrings.Result,
+                TotalDosageCount = totalDosageCounts.Result,
+                PerBottleSize = totalNumberByBottleSize.Result,
+                PerMedicationId = distinctMedicationIdsWithCount.Result
             };
             return Ok(_mapper.Map<StatisticsDTO>(result));
         }
